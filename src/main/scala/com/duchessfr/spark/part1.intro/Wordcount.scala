@@ -13,11 +13,6 @@ object Wordcount {
 
   val pathToFile = "data/reduced-tweets.txt"
 
-  def wordcount(tweets) = {
-   
-}
-
-
   def main(args: Array[String]) = {
 
     // create spark  configuration and spark context
@@ -29,10 +24,8 @@ object Wordcount {
 
     // load data and create an RDD of string
     val tweets = sc.textFile(pathToFile)
-                  
-    //wordcount(tweets)
+            
 
-    sc.stop()
   }
 
 }
