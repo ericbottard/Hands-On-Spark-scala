@@ -1,4 +1,4 @@
-Spark Handson - Scala 
+Spark Hands-on - Scala 
 =============================================================================
 
 In this Hands-On, we are going to show how you can use Apache Spark and some components of it ecosystem for data processing.
