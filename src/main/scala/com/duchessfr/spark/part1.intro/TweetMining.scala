@@ -5,28 +5,33 @@ import org.apache.spark.{SparkConf, SparkContext}
 object TweetMining {
 
   val pathToFile = "data/reduced-tweets.txt";
+  private static String pathToFile = "data/reduced-tweets.txt";
 
-  def replaceEbyOne(sc: SparkContext) {
-    val data = sc.textFile(pathToFile);
+  // Find all the people mentioned on tweets
 
-    // replace all characters "e" of the file by "2"
-    val result = data.map(word => word.replace("e", "2"))
+def mentionedPeople(tweets : RDD[Tweets]) ={
+  val userPattern ="""@(\w+)""".r
+  tweets.flatMap ( tweet => userPattern findAllIn tweet.text)
+}
 
-    // print all the results
+  // Count how many times each person is mentioned
+def countMentions (tweets: RDD[Tweets]) ={
+  val mentions =mentionedPeople(tweets)
+  mentions.map(p => (p, 1))
+          .reduceByKey(_ + _)
+}
 
-    result.foreach(println);
-  }
+  // Find the 10 most mentioned people
+def top10mentions (tweets: RDD[Tweet])= {
+  val mentions= countMentions(tweets).map (k => (k._2, k._1))
+                                     .sortByKey(false)
+                                     .map {case (v , k) => (k,v)}
+                                     .take(10)
 
-  def groupWordsBylength(sc: SparkContext) {
-    val data = sc.textFile(pathToFile)
-                 .flatMap(line => line.split(" "));
+  //Or a much easier way
+  val mentionsBis = countMentions(tweets).top(10)(Ordering.by(m=>m._2))
 
-    // group words by their length
-    val result = data.groupBy(x => x.length)
-
-    // print all the results
-    result.foreach(println);
-  }
+}
 
   def main(args: Array[String]) = {
     // create conf and spark context
@@ -36,10 +41,6 @@ object TweetMining {
 
     val sc = new SparkContext(conf)
 
-    replaceEbyOne(sc);
 
-    groupWordsBylength(sc);
-
-    sc.stop();
   }
 }

@@ -11,13 +11,16 @@ import com.duchessfr.spark.utils._
  */
 object Wordcount {
 
-  val pathToFile = "data/reduced-tweets.txt"
 
-  def wordcount(tweets: RDD) = {
+  def wordcount(sc : SparkContext) = {
+
+    //Read data from a text file
+
+    val text = sc.textFile("data/reduced-tweets.txt")
 
     val wordcount = tweets.flatMap(line => line.split(" "))
                           .map(word => (word, 1))
-                        .reduceByKey( _ + _)
+                          .reduceByKey((a,b) => a+b)
 
     println("Pair number : " + wordcount.count())
     println("The first result : " + wordcount.first())
@@ -30,8 +33,8 @@ object Wordcount {
     // Now find words which appear more than 4 times
     val filter = wordcount.filter(pair => pair._2 >= 4)
 
-    println("Pair number : " + filter.count());
-    println("The first result : " +  filter.first());
+    println("Pair number : " + filter.count)
+    println("The first result : " +  filter.first )
     // All the results
     wordcount.foreach(println)
 }
@@ -46,12 +49,7 @@ object Wordcount {
 
     val sc = new SparkContext(conf)
 
-    // load data and create an RDD of string
-    val tweets = sc.textFile(pathToFile)
-                   .mapPartitions(line => parseFromJson(_))
-                   .cache()
-
-    //wordcount(tweets)
+    wordcount(sc);
 
     sc.stop()
   }
