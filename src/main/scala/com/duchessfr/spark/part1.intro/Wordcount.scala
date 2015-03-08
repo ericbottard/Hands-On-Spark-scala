@@ -15,7 +15,7 @@ object Wordcount {
 
   def wordcount(tweets: RDD) = {
    //count here
-    val wordcount = ...
+   
     
     println("Pair number : ")
     println("The first result : " 
@@ -23,13 +23,13 @@ object Wordcount {
 
 
     // Save the result in an output file
-    wordcount.saveAsTextFile("/pathDirectory/wordcount")
+   
 
     // Now find words which appear more than 4 times
     
     println("Pair number : ");
     println("The first result : " );
-    // All the results
+    // Print all the results into stdout
     //wordcount.foreach(println)
 }
 
