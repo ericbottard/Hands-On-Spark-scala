@@ -1,34 +1,28 @@
-Spark Hands-on - Scala 
-=============================================================================
-
+# Spark-HandsOn
 In this Hands-On, we are going to show how you can use Apache Spark and some components of it ecosystem for data processing.
-In the first part, you will implement the wordcount example with the Spark API, and play with some classic useful functions.
+This workshop is split in four parts. We will use a dataset that consists of tweets containing just a few fields like id, user, text, country and place.
 
-After that, we introduce Spark SQL, which allows relational queries expressed in SQL, HiveQL, or Scala to be executed using Spark. Here Spark SQL is used to analyse a dataset of tweets.
 
-In the third part, we want to define the language of tweets. We use Spark MLLib to apply algorithms to train a model on the data and make prediction then.
+In the first one, you will play with the Spark API for basic operations like counting, filtering, aggregating.
 
-To finish Spark Streaming is used with Spark MLLib to filter a live stream of Tweets for those that match some criteria.
+After that, you will get to know Spark SQL to query structured data (here in json) using SQL.
+
+In the third part, you will use Spark Streaming and the twitter streaming API to analyse a live stream of Tweets.
+
+To finish we will build a simple model to identify the language in a text. For that you will use MLLib.
 
 Let's go and have fun !
 
 ## Prerequisites
-- Java > 6 (8 is better to use the lambda expression)
+- download Spark binaries
+- sbt
 - IDE
 
-## Spark shell
+## Use the Spark shell
 The Spark shell is very useful for interactive analysis. For example you can use it when you want testing or play with the API.
 Just launch it with the following command (for the Scala shell) :
 
 `spark-shell`
-
-## Part 1 : wordcount & text mining
-
-## Part 2 : have fun with Spark SQL
-
-## Part 3 : Machine Learning with MLlib
-
-## Part 4 : Let's play with Spark streaming
 
 # Some links
 Apache Spark <https://spark.apache.org>
@@ -41,4 +35,3 @@ Talks
 
 - <https://speakerdeck.com/nivdul/lightning-fast-machine-learning-with-spark>
 - <https://speakerdeck.com/samklr/scalable-machine-learning-with-spark>
-
