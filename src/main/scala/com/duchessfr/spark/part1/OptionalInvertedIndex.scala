@@ -12,7 +12,6 @@ object OptionalInvertedIndex {
 
   /**
    *  [Optional]
-   *
    *  Buildind a hashtag search engine   *
    *  The goal is to build an inverted index. An inverted is the data
    *  structure  used to build search engines.
@@ -21,7 +20,6 @@ object OptionalInvertedIndex {
    *  Assuming #spark is an hashtag that appears in tweet1, tweet3, tweet39.
    *  Our inverted index is a Map (or HashMap) that contains a
    *  (key, value) pair as (#spark, List(tweet1,tweet3, tweet39)).
-   *
    */
 
 
@@ -43,7 +41,9 @@ object OptionalInvertedIndex {
 
 
 
-// Keep the fun going on
+
+
+//
 /*
  (optional) : Modify your code to index all the words in the tweets,
 and track how many times each word appears in every tweet : your result should look likeHashMap<word,

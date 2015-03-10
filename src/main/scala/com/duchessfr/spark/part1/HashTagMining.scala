@@ -7,13 +7,13 @@ import com.duchessfr.spark.utils.TweetUtils._
 
 object HashTagMining {
 
-  // Find all the hashtags mentioned in all the tweets set
+  // 1. Find all the hashtags mentioned in all the tweets set
  
  
-  // Count how many times each hashtag is mentioned
+  // 2. Count how many times each hashtag is mentioned
  
 
-  // Find the 10 most popular Hashtags
+  // 3. Find the 10 most popular Hashtags
 
  
 

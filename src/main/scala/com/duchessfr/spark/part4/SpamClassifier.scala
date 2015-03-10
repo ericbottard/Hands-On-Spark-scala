@@ -1,6 +1,7 @@
 
 
 import org.apache.spark._
+import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext._
 import org.apache.spark.sql.{Row, SQLContext}
 import org.apache.spark.ml.Pipeline
@@ -19,12 +20,14 @@ object SpamClassifier {
 
   def main(args: Array[String]) {
 
-    val conf = new SparkConf()
-                  .setAppName("Spark handson - Spam Classifier")
+    val conf = new SparkConf().setMaster("local[*]")
+                              .setAppName("SpamClassifier")
 
     val sc = new SparkContext(conf)
 
+
     val sqlContext = new SQLContext(sc)
+
     import sqlContext._
 
     

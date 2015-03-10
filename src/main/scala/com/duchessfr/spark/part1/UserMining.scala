@@ -22,10 +22,10 @@ object UserMining extends App{
                            .cache
 
  
-  // Find all the tweets by user
- 
+  // 1. Find all the tweets by user
 
-    // Find how many tweets each user has, and find Top 10 people which the most tweets
+
+  // 2. Find how many tweets each user has, and find Top 10 people which the most tweets
   
 
 }

@@ -9,7 +9,7 @@ object FunWithSparkSQL extends App{
 
 
   val conf = new SparkConf()
-      .setAppName("HashTagMining")
+      .setAppName("Spark SQL")
       .setMaster("local[*]")
 
   val sc = new SparkContext(conf)

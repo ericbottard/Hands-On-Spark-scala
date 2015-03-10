@@ -10,8 +10,7 @@ import com.duchessfr.spark.utils._
  *  Count how much each word appears in a file and make some operation on the result
  */
 object Wordcount {
-  
-  
+
   //This is a toy exercice to get you to know some spark basics
   // use the spark shell for this.
 
@@ -28,6 +27,15 @@ object Wordcount {
 
     // load data and create an RDD of string
     val tweets = sc.textFile(pathToFile)
+
+    //counting those words
+
+    val count = tweets.flatMap(line => line.split(" "))
+                      .map (w => (w ,1))
+                      .reduceByKey(_+_)
+
+
+    println(count)
             
 
   }

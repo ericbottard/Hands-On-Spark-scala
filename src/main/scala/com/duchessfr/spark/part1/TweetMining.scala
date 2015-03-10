@@ -13,10 +13,10 @@ object TweetMining {
   // Find all the people mentioned on the tweets 
 
 
-  // Find every people mentioned on tweet and count how many times they are mentioned
+  // 1. Find every people mentioned on tweet and count how many times they are mentioned
 
 
-  // Find the 10 most mentioned people
+  // 2. Find the 10 most mentioned people
 
 
 
@@ -28,6 +28,6 @@ object TweetMining {
 
     val sc = new SparkContext(conf)
 
-
+    sc.stop()
   }
 }
