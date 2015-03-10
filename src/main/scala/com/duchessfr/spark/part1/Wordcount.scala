@@ -35,7 +35,7 @@ object Wordcount {
                       .reduceByKey(_+_)
 
 
-    println(count)
+    count.foreach(println)
             
 
   }
