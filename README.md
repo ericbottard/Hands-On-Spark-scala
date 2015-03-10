@@ -24,6 +24,17 @@ To start the spark shell :
  Go to the folder where you decompressed the spark binaries, and type : 
 `bin/spark-shell`
 
+
+## Configure the project for Intellij
+If you want to use the project with IntelliJ and SBT, you will need to generate the confiuration
+To do so, go the root of the project and hit : 
+> sbt update
+> sbt  
+Then in the SBT console type : 
+    > run gen-idea
+Now you can import the project to your IDE.
+
+
 ## Twitter Credentials
 In the workshop, we will use at some point the Twitter Streaming API. To be able to read the firehose, you will need to create an app at http://apps.twitter.com , and get your credentials.
 
