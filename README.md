@@ -1,4 +1,4 @@
-# Spark-HandsOn
+# Spark  Hands-on
 In this Hands-On, we will see how you can use Apache Spark and some components of it ecosystem for data processing.
 This workshop is split in four parts. We will use a dataset that consists of tweets containing just a few fields like id, user, text, country and place.
 
@@ -12,6 +12,7 @@ To finish we will build a simple model to identify the language in a text. For t
 Let's go and have fun !
 
 ## Prerequisites
+-Instal the JDK (Java 8 is recommended)
 - Download Spark binaries : 
       http://spark.apache.com/downloads.html
       http://wwwftp.ciril.fr/pub/apache/spark/spark-1.2.1/spark-1.2.1-bin-hadoop1.tgz
