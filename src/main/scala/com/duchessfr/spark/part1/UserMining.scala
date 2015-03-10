@@ -1,4 +1,4 @@
-package com.duchessfr.spark.part1.intro
+package com.duchessfr.spark.part1
 
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
