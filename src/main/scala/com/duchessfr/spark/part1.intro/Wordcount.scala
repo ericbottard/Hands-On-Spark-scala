@@ -10,6 +10,10 @@ import com.duchessfr.spark.utils._
  *  Count how much each word appears in a file and make some operation on the result
  */
 object Wordcount {
+  
+  
+  //This is a toy exercice to get you to know some spark basics
+  // use the spark shell for this.
 
   val pathToFile = "data/reduced-tweets.txt"
 
