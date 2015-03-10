@@ -2,7 +2,9 @@ package com.duchessfr.spark.part1
 
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
-import com.duchess.spark.util.TweetUtils._
+import com.duchessfr.spark.utils.TweetUtils
+import com.duchessfr.spark.utils.TweetUtils._
+
 
 object TweetMining {
 

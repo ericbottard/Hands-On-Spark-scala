@@ -1,8 +1,8 @@
 package com.duchessfr.spark.part1
 
+import com.duchessfr.spark.utils.TweetUtils
 import com.duchessfr.spark.utils.TweetUtils._
-
-import org.apache.spark.{SparkContext, SparkConf}
+import org.apache.spark._
 
 import scala.collection.Seq
 import scala.collection.Seq
@@ -24,27 +24,27 @@ object OptionalInvertedIndex {
    *
    */
 
-  def invertedIndex (tweets : RDD[Tweet]) : Map[String,List[Tweet]] = {
+  def invertedIndex (tweets : RDD[Tweet]) : Map[String, List[Tweet]] = {
     
 
   }
 
   // create spark  configuration and spark context
-  val conf = new SparkConf()
-    .setAppName("HashTagMining")
-    .setMaster("local[*]")
+  val conf = new SparkConf().setAppName("HashTagMining")
+                            .setMaster("local[*]")
 
   val sc = new SparkContext(conf)
 
-  val tweets = sparkContext.textFile("data/reduced-tweets.txt")
+  val tweets = sc.textFile("data/reduced-tweets.txt")
                            .mapPartitions(TweetUtils.parseFromJson(_))
                            .cache
 
   //Let's try it out
   val invertedIdx = invertedIndex(tweets)
-  invertedIndex.take(3).foreach(println)
 
-  invertedIndex.get(("#Madrid"))   //Put your own hashtags contained in the data
+  //invertedIndex.take(3).foreach(println)
+
+
 
 // Keep the fun going on
 /*

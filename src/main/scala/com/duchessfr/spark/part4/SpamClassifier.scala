@@ -1,6 +1,7 @@
 
 
-import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark._
+import org.apache.spark.SparkContext._
 import org.apache.spark.sql.{Row, SQLContext}
 import org.apache.spark.ml.Pipeline
 import org.apache.spark.ml.classification.LogisticRegression

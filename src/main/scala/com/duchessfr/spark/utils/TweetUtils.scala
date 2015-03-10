@@ -12,8 +12,7 @@ object TweetUtils {
                        place       : String,
                        country     : String,
                        lang        : String
-
-                       )
+    )
 
   def parseFromJson(lines:Iterator[String])={
     val gson = new Gson

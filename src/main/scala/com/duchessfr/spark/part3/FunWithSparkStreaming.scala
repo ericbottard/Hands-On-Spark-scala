@@ -3,11 +3,11 @@ package com.duchessfr.spark.part4
 import twitter4j.auth.OAuthAuthorization;
 import twitter4j.conf.ConfigurationBuilder;
 
+import org.apache.spark._
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.SparkContext._
 import org.apache.spark.streaming.twitter._
 import org.apache.spark.streaming.StreamingContext._
-
 
 object FunWithSparkStreaming extends App{
 
