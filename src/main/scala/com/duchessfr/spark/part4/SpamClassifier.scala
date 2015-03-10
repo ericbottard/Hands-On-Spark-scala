@@ -46,20 +46,19 @@ object SpamClassifier {
     // Each stage outputs a column in a SchemaRDD and feeds it to the next stage's input column.
 
     val tokenizer = new Tokenizer() // Splits each email into words
-                  // ....
-                  //....
+      .setInputCol("text")
+      .setOutputCol("words")
 
     val hashingTF = new HashingTF() // Maps email words to vectors of 100 features.
-                  //......
-                  //.....
-                  /......
-
-    val logisticregression = new LogisticRegression() // LogisticRegression uses inputCol "features" by default.
+      .setNumFeatures(100)
+      .setInputCol(tokenizer.getOutputCol)
+      .setOutputCol("features")
+ 
+   val logisticregression = new LogisticRegression() // LogisticRegression uses inputCol "features" by default.
    
-    val pipeline = new Pipeline()
-        //set stage with all the steps above
+   val pipeline = new Pipeline().setStages(Array(tokenizer, hashingTF, lr))   //initialize your pipeline
 
-
+       
    // Now we fit the pipeline, but the pipeline uses SchemaRDD to do its magic. It needs to transform  Case class into 
    //schema RDD. Hopefully Spark SQL can do this without any help. we just need to import it into the namespace
     val model = pipeline.fit(trainingData)
