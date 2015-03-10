@@ -50,5 +50,6 @@ object FunWithSparkStreaming extends App{
         val r = topList.map{case (count, tag) => println(s"$tag: $count")}
           })
 
-
+    ssc.start()
+    ssc.awaitTermination()
 }
