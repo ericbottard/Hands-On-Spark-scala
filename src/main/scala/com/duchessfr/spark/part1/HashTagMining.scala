@@ -2,7 +2,7 @@ package com.duchessfr.spark.part1
 
 import org.apache.spark.{SparkContext, SparkConf}
 import org.apache.spark.SparkContext._
-import com.duchessfr.spark.part1.utils._
+import com.duchessfr.spark.utils.TweetUtils._
 
 object HashTagMining {
 
@@ -24,7 +24,7 @@ object HashTagMining {
 
     val sc = new SparkContext(conf)
 
-    val tweets = sparkContext.textFile("data/reduced-tweets.txt")
+    val tweets = sc.textFile("data/reduced-tweets.txt")
                              .mapPartitions(TweetUtils.parseFromJson(_))
                              .cache
 
