@@ -52,11 +52,11 @@ object SpamClassifier {
     val hashingTF = new HashingTF() // Maps email words to vectors of 100 features.
                   //......
                   //.....
-                  /......
+                  //......
 
     val logisticregression = new LogisticRegression() // LogisticRegression uses inputCol "features" by default.
    
-    val pipeline = new Pipeline()
+    val pipeline = new Pipeline() // .setStages(Array(tokenizer, hashingTF, lr))   //initialize your pipeline
         //set stage with all the steps above
 
 
