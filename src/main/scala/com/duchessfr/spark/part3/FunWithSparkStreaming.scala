@@ -9,7 +9,7 @@ import org.apache.spark.streaming.twitter._
 import org.apache.spark.streaming.StreamingContext._
 
 
-object FunWithSparkStreaming extends App{
+object FunWithSparkStreaming extends App {
 
     val CONSUMER_KEY = "";
     val CONSUMER_SECRET = "";
@@ -48,8 +48,9 @@ object FunWithSparkStreaming extends App{
     topCounts30.foreachRDD(rdd => {
         val topList = rdd.take(10).toList
         val r = topList.map{case (count, tag) => println(s"$tag: $count")}
-          })
+          }
+   )
 
-    ssc.start()
-    ssc.awaitTermination()
+    ssc.start
+    ssc.awaitTermination
 }
