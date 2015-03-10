@@ -3,7 +3,7 @@ package com.duchessfr.spark.part1
 import com.duchessfr.spark.utils.TweetUtils
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
-import com.duchessfr.spark.util.TweetUtils._
+import com.duchessfr.spark.utils.TweetUtils._
 
 object UserMining extends App{
   

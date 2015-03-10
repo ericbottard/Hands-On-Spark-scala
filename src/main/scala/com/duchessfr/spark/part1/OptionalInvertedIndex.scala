@@ -24,10 +24,7 @@ object OptionalInvertedIndex {
    *
    */
 
-  def invertedIndex (tweets : RDD[Tweet]) : Map[String, List[Tweet]] = {
-    
 
-  }
 
   // create spark  configuration and spark context
   val conf = new SparkConf().setAppName("HashTagMining")
@@ -40,7 +37,7 @@ object OptionalInvertedIndex {
                            .cache
 
   //Let's try it out
-  val invertedIdx = invertedIndex(tweets)
+  //val invertedIdx = invertedIndex(tweets)
 
   //invertedIndex.take(3).foreach(println)
 

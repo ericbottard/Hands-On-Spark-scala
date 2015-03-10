@@ -19,7 +19,7 @@ object SpamClassifier {
 
   def main(args: Array[String]) {
 
-    val conf = new SparkConf
+    val conf = new SparkConf()
                   .setAppName("Spark handson - Spam Classifier")
 
     val sc = new SparkContext(conf)
@@ -73,9 +73,10 @@ object SpamClassifier {
     ))
 
     val predictions = model.transform(testData)
-      .select('id, 'prediction).collect()
-      .map { case Row(id, prediction) => (id, prediction) }.toMap
-    
+                           .select('id, 'prediction).collect()
+                           .map { case Row(id, prediction) => (id, prediction) }
+                           .toMap
+
     println(s"Prediction for positive test example: ${predictions(0)}")
     println(s"Prediction for negative test example: ${predictions(1)}")
   }
