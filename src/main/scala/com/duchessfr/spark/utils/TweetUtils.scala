@@ -2,7 +2,7 @@ package com.duchessfr.spark.utils
 
 import com.google.gson._
 
-object Parse {
+object TweetUtils {
 
   case class Tweet (
                        id          : String,
