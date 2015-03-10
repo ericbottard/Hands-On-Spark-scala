@@ -1,5 +1,9 @@
 package com.duchessfr.spark.part1.intro
 
+import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.SparkContext._
+import com.duchessfr.spark.part1.intro.util._
+
 object UserMining extends App{
   
  val data = "data/reduced-tweets.txt";
