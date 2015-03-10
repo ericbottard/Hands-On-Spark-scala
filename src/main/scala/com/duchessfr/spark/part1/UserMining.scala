@@ -2,7 +2,7 @@ package com.duchessfr.spark.part1
 
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
-import com.duchessfr.spark.part1.intro.util._
+import com.duchessfr.spark.util._
 
 object UserMining extends App{
   
@@ -16,7 +16,7 @@ object UserMining extends App{
   val sc = new SparkContext(conf)
 
  // Load the data  and parse it into a Tweet. Look at the Tweet Objetc in the TweetUtils class.
-  val tweets = sparkContext.textFile(data)
+  val tweets = sc.textFile(data)
                            .mapPartitions(TweetUtils.parseFromJson(_))
                            .cache
 
