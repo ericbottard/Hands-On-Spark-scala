@@ -21,10 +21,21 @@ object UserMining extends App{
                            .cache
 
  
-  // Find all the tweets by user
  
+  // Find all the tweets by user
+  def findAllTweetsByUsers (tweets :RDD[Tweet])={
+      tweets.groupBy(_.user)
+  }
 
-    // Find how many tweets each user has, and find Top 10 people which the most tweets
-  
+    // Find how many tweets each user has
+  def nbTweetByUsers (tweets: RDD[Tweet]) = {
+      tweets.map(tweet => (tweet.user, 1))
+            .reduceByKey(_+_)
+
+      //Top 10 twitterers
+      val top10 = nbTweetsPerUser.sortBy(_._2,false).take(10)
+      //or
+      val top10bis = nbTweetsPerUser.top(10)((Ordering.by(m => m._2)))
+  }
 
 }

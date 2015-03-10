@@ -26,6 +26,12 @@ object OptionalInvertedIndex {
 
   def invertedIndex (tweets : RDD[Tweet]) : Map[String,List[Tweet]] = {
     
+            tweets.flatMap (tweet =>                                  
+                              val ht = pattern findAllIn tweet.text
+                              ht.map (ht => (ht, tweet))
+                            )
+                   .groupByKey()      //expensive shuffle
+                   .collectAsMap      //even more expensive ops
 
   }
 

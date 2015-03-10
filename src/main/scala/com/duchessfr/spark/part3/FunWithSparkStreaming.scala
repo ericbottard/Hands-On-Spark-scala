@@ -11,8 +11,6 @@ import org.apache.spark.streaming.StreamingContext._
 
 object FunWithSparkStreaming extends App{
 
-
-
     val CONSUMER_KEY = "";
     val CONSUMER_SECRET = "";
     val ACCESS_TOKEN = "";
@@ -22,7 +20,6 @@ object FunWithSparkStreaming extends App{
     System.setProperty("twitter4j.oauth.consumerSecret", CONSUMER_SECRET)
     System.setProperty("twitter4j.oauth.accessToken", ACCESS_TOKEN)
     System.setProperty("twitter4j.oauth.accessTokenSecret", ACCESS_TOKEN_SECRET)
-
 
 
     val conf = new SparkConf()
@@ -39,15 +36,13 @@ object FunWithSparkStreaming extends App{
 
     ///For each tweet in the stream filter out all the hashtags
     //  stream is just an RDD so you can do all the operation you did in the first part of the hands-on
-
-    val hashTags = stream.flatMap ...
+    val hashTags = stream.flatMap(status => status.getText.split(" ").filter(_.startsWith("#")))
 
     //Now here, find the 30 most popular hashtags in a 30 seconds window 
     // Look at the reduceByKeyAndWindow function in the spark doc ... it should like this :
-    val topCounts30 = hashTags.map..
-                              .reduceByKeyAndWindow ...
-                              .map ...
-                              .transform ....
+    val topCounts30 = hashTags.map((_, 1)).reduceByKeyAndWindow(_ + _, Seconds(30))
+                          .map{case (topic, count) => (count, topic)}
+                          .transform(_.sortByKey(false))
 
     // Now that we have our top30 we can print them out....
     topCounts30.foreachRDD(rdd => {
@@ -55,5 +50,6 @@ object FunWithSparkStreaming extends App{
         val r = topList.map{case (count, tag) => println(s"$tag: $count")}
           })
 
-
+    ssc.start()
+    ssc.awaitTermination()
 }
