@@ -1,4 +1,4 @@
-package com.duchessfr.spark.part4
+package com.duchessfr.spark.part3
 
 import twitter4j.auth.OAuthAuthorization;
 import twitter4j.conf.ConfigurationBuilder;
@@ -50,6 +50,5 @@ object FunWithSparkStreaming extends App{
         val r = topList.map{case (count, tag) => println(s"$tag: $count")}
           })
 
-    ssc.start()
-    ssc.awaitTermination()
+
 }
